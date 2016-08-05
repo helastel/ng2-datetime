@@ -9,13 +9,13 @@ import MaskedInput from 'angular2-text-mask';
     template: `
     <div class="form-inline">
         <div id="{{idDatePicker}}" class="input-group date">
-            <input [textMask]="dateTextMaskOtpions"  type="text" class="form-control"/>
+            <input [textMask]="dateTextMaskOtpions" placeholder="datePlaceholder" type="text" class="form-control"/>
             <div class="input-group-addon">
                 <span [ngClass]="datepickerOptions.icon || 'glyphicon glyphicon-th'"></span>
             </div>
         </div>
         <div class="input-group bootstrap-timepicker timepicker">
-            <input id="{{idTimePicker}}" [textMask]="timeTextMaskOtpions" type="text" class="form-control input-small">
+            <input id="{{idTimePicker}}" [textMask]="timeTextMaskOtpions" placeholder="timePlaceholder" type="text" class="form-control input-small">
             <span class="input-group-addon"><i [ngClass]="timepickerOptions.icon || 'glyphicon glyphicon-time'"></i></span>
         </div>
     </div>
@@ -33,6 +33,10 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     datepickerOptions: any = {};
     @Input('dateTextMask')
     dateTextMaskOtpions: any = {};
+    @Input('timePlaceholder')
+    datePlaceholder: string = "";
+    @Input('datePlaceholder')
+    timePlaceholder: string = "";
 
     date: Date; // ngModel
     // instances
@@ -43,10 +47,8 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     private idTimePicker: string = uniqueId('q-timepicker_');
 
     @HostListener('dateChange', ['$event'])
-    onChange = (_) => {
-    };
-    onTouched = () => {
-    };
+    onChange = (_) => { };
+    onTouched = () => { };
 
     constructor(ngControl: NgControl) {
         ngControl.valueAccessor = this; // override valueAccessor

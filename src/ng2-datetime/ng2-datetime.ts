@@ -3,9 +3,11 @@ import {
     SimpleChanges, OnChanges
 } from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
+import MaskedInput from 'angular2-text-mask';
 
 @Component({
     selector: 'datetime',
+    directives: [MaskedInput],
     template: `
     <div class="form-inline">
         <div id="{{idDatePicker}}" class="input-group date">
@@ -121,10 +123,10 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     checkEmptyValue(e) {
         const value = e.target.value;
         if (value === '' && (
-                this.timepickerOptions === false ||
-                this.datepickerOptions === false ||
-                (this.timeModel === '' && this.dateModel === '')
-            )) {
+            this.timepickerOptions === false ||
+            this.datepickerOptions === false ||
+            (this.timeModel === '' && this.dateModel === '')
+        )) {
             this.dateChange.emit(null);
         }
     }
@@ -164,7 +166,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
         }
 
         if (!this.timepicker && this.timepickerOptions !== false) {
-            let options = jQuery.extend({defaultTime: false}, this.timepickerOptions);
+            let options = jQuery.extend({ defaultTime: false }, this.timepickerOptions);
             this.timepicker = (<any>$('#' + this.idTimePicker)).timepicker(options);
             this.timepicker
                 .on('changeTime.timepicker', (e) => {

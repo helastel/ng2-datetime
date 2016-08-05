@@ -9,7 +9,8 @@ import {ControlValueAccessor, NgControl} from '@angular/forms';
     template: `
     <div class="form-inline">
         <div id="{{idDatePicker}}" class="input-group date">
-            <input type="text" class="form-control" 
+            <input type="text" class="form-control"
+		   [textMask]="dateTextMaskOtpions" 
                    [(ngModel)]="dateModel"
                    (keyup)="checkEmptyValue($event)"/>
             <div class="input-group-addon">
@@ -19,6 +20,7 @@ import {ControlValueAccessor, NgControl} from '@angular/forms';
         <div class="input-group bootstrap-timepicker timepicker">
             <input id="{{idTimePicker}}" type="text" class="form-control input-small" 
                    [(ngModel)]="timeModel"
+		   [textMask]="timeTextMaskOtpions" 
                    (keyup)="checkEmptyValue($event)">
             <span class="input-group-addon"><i [ngClass]="timepickerOptions.icon || 'glyphicon glyphicon-time'"></i></span>
         </div>
@@ -31,8 +33,12 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     dateChange: EventEmitter<Date> = new EventEmitter<Date>();
     @Input('timepicker')
     timepickerOptions: any = {};
+    @Input('timeTextMask')
+    timeTextMaskOtpions: any = {};
     @Input('datepicker')
     datepickerOptions: any = {};
+    @Input('dateTextMask')
+    dateTextMaskOtpions: any = {};
     @Input('hasClearButton')
     hasClearButton = false;
 

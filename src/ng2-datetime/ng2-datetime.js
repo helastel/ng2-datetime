@@ -18,12 +18,12 @@ var NKDatetime = (function () {
         this.timeTextMaskOtpions = {};
         this.datepickerOptions = {};
         this.dateTextMaskOtpions = {};
+        this.datePlaceholder = "";
+        this.timePlaceholder = "";
         this.idDatePicker = uniqueId('q-datepicker_');
         this.idTimePicker = uniqueId('q-timepicker_');
-        this.onChange = function (_) {
-        };
-        this.onTouched = function () {
-        };
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
         ngControl.valueAccessor = this; // override valueAccessor
     }
     NKDatetime.prototype.ngAfterViewInit = function () {
@@ -142,6 +142,14 @@ var NKDatetime = (function () {
         __metadata('design:type', Object)
     ], NKDatetime.prototype, "dateTextMaskOtpions", void 0);
     __decorate([
+        core_1.Input('timePlaceholder'), 
+        __metadata('design:type', String)
+    ], NKDatetime.prototype, "datePlaceholder", void 0);
+    __decorate([
+        core_1.Input('datePlaceholder'), 
+        __metadata('design:type', String)
+    ], NKDatetime.prototype, "timePlaceholder", void 0);
+    __decorate([
         core_1.HostListener('dateChange', ['$event']), 
         __metadata('design:type', Object)
     ], NKDatetime.prototype, "onChange", void 0);
@@ -149,7 +157,7 @@ var NKDatetime = (function () {
         core_1.Component({
             selector: 'datetime',
             directives: [angular2_text_mask_1.default],
-            template: "\n    <div class=\"form-inline\">\n        <div id=\"{{idDatePicker}}\" class=\"input-group date\">\n            <input [textMask]=\"dateTextMaskOtpions\"  type=\"text\" class=\"form-control\"/>\n            <div class=\"input-group-addon\">\n                <span [ngClass]=\"datepickerOptions.icon || 'glyphicon glyphicon-th'\"></span>\n            </div>\n        </div>\n        <div class=\"input-group bootstrap-timepicker timepicker\">\n            <input id=\"{{idTimePicker}}\" [textMask]=\"timeTextMaskOtpions\" type=\"text\" class=\"form-control input-small\">\n            <span class=\"input-group-addon\"><i [ngClass]=\"timepickerOptions.icon || 'glyphicon glyphicon-time'\"></i></span>\n        </div>\n    </div>\n   "
+            template: "\n    <div class=\"form-inline\">\n        <div id=\"{{idDatePicker}}\" class=\"input-group date\">\n            <input [textMask]=\"dateTextMaskOtpions\" placeholder=\"datePlaceholder\" type=\"text\" class=\"form-control\"/>\n            <div class=\"input-group-addon\">\n                <span [ngClass]=\"datepickerOptions.icon || 'glyphicon glyphicon-th'\"></span>\n            </div>\n        </div>\n        <div class=\"input-group bootstrap-timepicker timepicker\">\n            <input id=\"{{idTimePicker}}\" [textMask]=\"timeTextMaskOtpions\" placeholder=\"timePlaceholder\" type=\"text\" class=\"form-control input-small\">\n            <span class=\"input-group-addon\"><i [ngClass]=\"timepickerOptions.icon || 'glyphicon glyphicon-time'\"></i></span>\n        </div>\n    </div>\n   "
         }), 
         __metadata('design:paramtypes', [common_1.NgControl])
     ], NKDatetime);

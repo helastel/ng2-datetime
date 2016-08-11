@@ -1,9 +1,7 @@
-import {
-    Component, Output, Input, EventEmitter, HostListener, AfterViewInit, OnDestroy,
-    SimpleChanges, OnChanges
-} from '@angular/core';
-import {ControlValueAccessor, NgControl} from '@angular/forms';
+import {Component, Output, Input, EventEmitter, HostListener, AfterViewInit, OnDestroy} from '@angular/core';
+import {ControlValueAccessor, NgControl} from '@angular/common';
 import MaskedInput from 'angular2-text-mask';
+
 
 @Component({
     selector: 'datetime',
@@ -11,43 +9,39 @@ import MaskedInput from 'angular2-text-mask';
     template: `
     <div class="form-inline">
         <div id="{{idDatePicker}}" class="input-group date">
-            <input type="text" class="form-control"
-		   [textMask]="dateTextMaskOtpions" 
-                   [(ngModel)]="dateModel"
-                   (keyup)="checkEmptyValue($event)"/>
+            <input (keyup)="question.setValue($event)" [placeholder]="datePlaceholderString" type="text" class="form-control"/>
             <div class="input-group-addon">
                 <span [ngClass]="datepickerOptions.icon || 'glyphicon glyphicon-th'"></span>
             </div>
         </div>
         <div class="input-group bootstrap-timepicker timepicker">
-            <input id="{{idTimePicker}}" type="text" class="form-control input-small" 
-                   [(ngModel)]="timeModel"
-		   [textMask]="timeTextMaskOtpions" 
-                   (keyup)="checkEmptyValue($event)">
+            <input  (keyup)="question.setValue($event)" id="{{idTimePicker}}" [placeholder]="timePlaceholderString" type="text" class="form-control input-small">
             <span class="input-group-addon"><i [ngClass]="timepickerOptions.icon || 'glyphicon glyphicon-time'"></i></span>
         </div>
-        <button *ngIf="hasClearButton" type="button" (click)="onClearClick()">Clear</button>
     </div>
    `
+
 })
-export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestroy, OnChanges {
+export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestroy {
     @Output()
     dateChange: EventEmitter<Date> = new EventEmitter<Date>();
     @Input('timepicker')
     timepickerOptions: any = {};
-    @Input('timeTextMask')
-    timeTextMaskOtpions: any = {};
+//    @Input('timeTextMask')
+//    timeTextMaskOtpions: any = {};
     @Input('datepicker')
     datepickerOptions: any = {};
-    @Input('dateTextMask')
-    dateTextMaskOtpions: any = {};
-    @Input('hasClearButton')
-    hasClearButton = false;
+//    @Input('dateTextMask')
+//    dateTextMaskOtpions: any = {};
+    @Input('timePlaceholder')
+    timePlaceholderString: string;
+    @Input('datePlaceholder')
+    datePlaceholderString: string;
+    //    @Input('question')
+    @Input() question: any;
+
 
     date: Date; // ngModel
-    dateModel: string;
-    timeModel: string;
-
     // instances
     datepicker: any;
     timepicker: any;
@@ -56,10 +50,8 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     private idTimePicker: string = uniqueId('q-timepicker_');
 
     @HostListener('dateChange', ['$event'])
-    onChange = (_) => {
-    };
-    onTouched = () => {
-    };
+    onChange = (_) => { };
+    onTouched = () => { };
 
     constructor(ngControl: NgControl) {
         ngControl.valueAccessor = this; // override valueAccessor
@@ -71,35 +63,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
 
     ngOnDestroy() {
         if (this.datepicker) {
-            this.datepicker.datepicker('destroy');
-        }
-        if (this.timepicker) {
-            this.timepicker.timepicker('remove');
-        }
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes) {
-            if (changes['datepickerOptions'] && this.datepicker) {
-                this.datepicker.datepicker('destroy');
-
-                if (changes['datepickerOptions'].currentValue) {
-                    this.datepicker = null;
-                    this.init();
-                } else if (changes['datepickerOptions'].currentValue === false) {
-                    this.datepicker.remove();
-                }
-            }
-            if (changes['timepickerOptions'] && this.timepicker) {
-                this.timepicker.timepicker('remove');
-
-                if (changes['timepickerOptions'].currentValue) {
-                    this.timepicker = null;
-                    this.init();
-                } else if (changes['timepickerOptions'].currentValue === false) {
-                    this.timepicker.parent().remove();
-                }
-            }
+//            this.datepicker.destroy();
         }
     }
 
@@ -120,30 +84,9 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
         this.onTouched = fn;
     }
 
-    checkEmptyValue(e) {
-        const value = e.target.value;
-        if (value === '' && (
-            this.timepickerOptions === false ||
-            this.datepickerOptions === false ||
-            (this.timeModel === '' && this.dateModel === '')
-        )) {
-            this.dateChange.emit(null);
-        }
-    }
-
-    onClearClick() {
-        this.dateChange.emit(null);
-        if (this.timepicker) {
-            this.timepicker.timepicker('setTime', null);
-        }
-        if (this.datepicker) {
-            this.datepicker.datepicker('update', null);
-        }
-    }
-
     //////////////////////////////////
 
-    private init(): void {
+    private init() {
         if (!this.datepicker && this.datepickerOptions !== false) {
             this.datepicker = (<any>$('#' + this.idDatePicker)).datepicker(this.datepickerOptions);
             this.datepicker
@@ -186,7 +129,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
                         this.date = new Date();
 
                         if (this.datepicker !== undefined) {
-                            this.datepicker.datepicker('update', this.date);
+                            this.datepicker.datepicker('update', this.date.toLocaleDateString('en-US'));
                         }
                     }
                     this.date.setHours(parseInt(hours));
@@ -198,27 +141,28 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
         }
     }
 
-    private updateModel(date?: Date): void {
-        // update datepicker
+    private updateModel(date?: Date) {
+        
+        console.log("DATE UPDATE");
+        // update date
         if (this.datepicker !== undefined) {
-            this.datepicker.datepicker('update', this.date);
+            this.datepicker.datepicker('update', date.toLocaleDateString('en-US'));
         }
 
-        // update timepicker
+        // update time
         if (this.timepicker !== undefined) {
             let hours = this.date.getHours();
             if (this.timepickerOptions.showMeridian) {
                 // Convert 24 to 12 hour system
                 hours = (hours === 0 || hours === 12) ? 12 : hours % 12;
             }
-            const meridian = this.date.getHours() >= 12 ? ' PM' : ' AM';
-            const time = this.pad(hours) + ':' + this.date.getMinutes() + meridian;
-            this.timepicker.timepicker('setTime', time);
-            this.timeModel = time; // fix initial empty timeModel bug
+            let meridian = this.date.getHours() >= 12 ? ' PM' : ' AM';
+
+            this.timepicker.timepicker('setTime', this.pad(hours) + ':' + this.date.getMinutes() + meridian);
         }
     }
 
-    private pad(value: any): string {
+    private pad(value: any) {
         return (value && value.toString().length < 2) ? '0' + value : value.toString();
     }
 }

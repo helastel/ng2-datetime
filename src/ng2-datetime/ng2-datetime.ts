@@ -19,8 +19,6 @@ import {ControlValueAccessor, NgControl} from '@angular/common';
     </div>
    `
 })
-
-
 export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestroy {
     @Output()
     dateChange: EventEmitter<Date> = new EventEmitter<Date>();
@@ -36,7 +34,6 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     timePlaceholderString: string;
     @Input('datePlaceholder')
     datePlaceholderString: string;
-    //    @Input('question')
     @Input() question: any;
     date: Date; // ngModel
     // instances
@@ -88,6 +85,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
                     }
                     this.date = newDate;
                     this.dateChange.emit(newDate);
+                    this.question.setValue(this.date);
                 });
         } else if (this.datepickerOptions === false) {
             (<any>$('#' + this.idDatePicker)).remove();
@@ -125,11 +123,10 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     }
     private updateModel(date?: Date) {
 
-        console.log("DATE UPDATE");
         // update date
-        if (this.datepicker !== undefined) {
-            this.datepicker.datepicker('update', date.toLocaleDateString('en-US'));
-        }
+//        if (this.datepicker !== undefined) {
+//            this.datepicker.datepicker('update', date.toLocaleDateString('en-US'));
+//        }
         // update time
         if (this.timepicker !== undefined) {
             let hours = this.date.getHours();
@@ -152,3 +149,6 @@ function uniqueId(prefix: string): string {
 function isDate(obj) {
     return Object.prototype.toString.call(obj) === '[object Date]';
 }
+
+
+

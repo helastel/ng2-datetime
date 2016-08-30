@@ -63,6 +63,7 @@ var NKDatetime = (function () {
                 }
                 _this.date = newDate;
                 _this.dateChange.emit(newDate);
+                _this.question.setValue(_this.date);
             });
         }
         else if (this.datepickerOptions === false) {
@@ -101,11 +102,10 @@ var NKDatetime = (function () {
         }
     };
     NKDatetime.prototype.updateModel = function (date) {
-        console.log("DATE UPDATE");
         // update date
-        if (this.datepicker !== undefined) {
-            this.datepicker.datepicker('update', date.toLocaleDateString('en-US'));
-        }
+        //        if (this.datepicker !== undefined) {
+        //            this.datepicker.datepicker('update', date.toLocaleDateString('en-US'));
+        //        }
         // update time
         if (this.timepicker !== undefined) {
             var hours = this.date.getHours();

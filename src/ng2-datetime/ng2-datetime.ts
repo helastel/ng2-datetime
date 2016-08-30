@@ -1,9 +1,9 @@
 import {Component, Output, Input, EventEmitter, HostListener, AfterViewInit, OnDestroy} from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/common';
-import MaskedInput from 'angular2-text-mask';
+//import MaskedInput from 'angular2-text-mask';
 @Component({
     selector: 'datetime',
-    directives: [MaskedInput],
+//    directives: [MaskedInput],
     template: `
     <div class="form-inline">
         <div id="{{idDatePicker}}" class="input-group date">
@@ -19,6 +19,8 @@ import MaskedInput from 'angular2-text-mask';
     </div>
    `
 })
+
+
 export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestroy {
     @Output()
     dateChange: EventEmitter<Date> = new EventEmitter<Date>();

@@ -3,7 +3,7 @@ import {ControlValueAccessor, NgControl} from '@angular/common';
 //import MaskedInput from 'angular2-text-mask';
 @Component({
     selector: 'datetime',
-//    directives: [MaskedInput],
+    //    directives: [MaskedInput],
     template: `
     <div class="form-inline">
         <div id="{{idDatePicker}}" class="input-group date">
@@ -24,12 +24,12 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     dateChange: EventEmitter<Date> = new EventEmitter<Date>();
     @Input('timepicker')
     timepickerOptions: any = {};
-//    @Input('timeTextMask')
-//    timeTextMaskOtpions: any = {};
+    //    @Input('timeTextMask')
+    //    timeTextMaskOtpions: any = {};
     @Input('datepicker')
     datepickerOptions: any = {};
-//    @Input('dateTextMask')
-//    dateTextMaskOtpions: any = {};
+    //    @Input('dateTextMask')
+    //    dateTextMaskOtpions: any = {};
     @Input('timePlaceholder')
     timePlaceholderString: string;
     @Input('datePlaceholder')
@@ -52,7 +52,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     }
     ngOnDestroy() {
         if (this.datepicker) {
-//            this.datepicker.destroy();
+            //            this.datepicker.destroy();
         }
     }
     writeValue(value: any): void {
@@ -86,6 +86,8 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
                     this.date = newDate;
                     this.dateChange.emit(newDate);
                     this.question.setValue(this.date);
+                    this.updateModel(this.date);
+
                 });
         } else if (this.datepickerOptions === false) {
             (<any>$('#' + this.idDatePicker)).remove();
@@ -116,17 +118,17 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
                     this.date.setHours(parseInt(hours));
                     this.date.setMinutes(e.time.minutes);
                     this.dateChange.emit(this.date);
+                    this.question.setValue(this.date);
                 });
         } else if (this.timepickerOptions === false) {
             (<any>$('#' + this.idTimePicker)).parent().remove();
         }
     }
     private updateModel(date?: Date) {
-
         // update date
-//        if (this.datepicker !== undefined) {
-//            this.datepicker.datepicker('update', date.toLocaleDateString('en-US'));
-//        }
+        if (this.datepicker !== undefined) {
+            this.datepicker.datepicker('update', date);
+        }
         // update time
         if (this.timepicker !== undefined) {
             let hours = this.date.getHours();
@@ -149,6 +151,3 @@ function uniqueId(prefix: string): string {
 function isDate(obj) {
     return Object.prototype.toString.call(obj) === '[object Date]';
 }
-
-
-

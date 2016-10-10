@@ -20,9 +20,30 @@
         }
       },
       "/home/fab/LSAR/app_src/web"
+    ],
+    [
+      {
+        "raw": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+        "spec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:positivestudio/ng2-datetime.git#1.1.0.9",
+          "sshUrl": "git+ssh://git@github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+          "httpsUrl": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+          "gitUrl": "git://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+          "shortcut": "github:positivestudio/ng2-datetime#1.1.0.9",
+          "directUrl": "https://raw.githubusercontent.com/positivestudio/ng2-datetime/1.1.0.9/package.json"
+        }
+      },
+      "/home/fab/LSAR/app_src/web"
     ]
   ],
-  "_from": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
+  "_from": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
   "_id": "ng2-datetime@1.1.4",
   "_inCache": true,
   "_installable": true,
@@ -31,31 +52,31 @@
     "when": "3.7.7"
   },
   "_requested": {
-    "raw": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
+    "raw": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
-    "spec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
+    "rawSpec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+    "spec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
     "type": "hosted",
     "hosted": {
       "type": "github",
-      "ssh": "git@github.com:positivestudio/ng2-datetime.git#1.1.0.8",
-      "sshUrl": "git+ssh://git@github.com/positivestudio/ng2-datetime.git#1.1.0.8",
-      "httpsUrl": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
-      "gitUrl": "git://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
-      "shortcut": "github:positivestudio/ng2-datetime#1.1.0.8",
-      "directUrl": "https://raw.githubusercontent.com/positivestudio/ng2-datetime/1.1.0.8/package.json"
+      "ssh": "git@github.com:positivestudio/ng2-datetime.git#1.1.0.9",
+      "sshUrl": "git+ssh://git@github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+      "httpsUrl": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+      "gitUrl": "git://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
+      "shortcut": "github:positivestudio/ng2-datetime#1.1.0.9",
+      "directUrl": "https://raw.githubusercontent.com/positivestudio/ng2-datetime/1.1.0.9/package.json"
     }
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/positivestudio/ng2-datetime.git#1189d7bb4a1ba3581b5cfdfc2986c4e1b368293b",
-  "_shasum": "15c72d490c2a5f0856b0a522484c85ea8cd9881e",
+  "_resolved": "git+https://github.com/positivestudio/ng2-datetime.git#4210ad49bcc5201e7826fbd2991669aacdaca3c0",
+  "_shasum": "6cda21f50c07c0a70eba5ec83e31287004d80493",
   "_shrinkwrap": null,
-  "_spec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.8",
+  "_spec": "git+https://github.com/positivestudio/ng2-datetime.git#1.1.0.9",
   "_where": "/home/fab/LSAR/app_src/web",
   "author": {
     "name": "Nikola Kalinov",

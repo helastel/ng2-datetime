@@ -130,15 +130,17 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
             this.datepicker.datepicker('update', date);
         }
         // update time
-        if (this.timepicker !== undefined) {
-            let hours = this.date.getHours();
-            if (this.timepickerOptions.showMeridian) {
-                // Convert 24 to 12 hour system
-                hours = (hours === 0 || hours === 12) ? 12 : hours % 12;
-            }
-            let meridian = this.date.getHours() >= 12 ? ' PM' : ' AM';
-            this.timepicker.timepicker('setTime', this.pad(hours) + ':' + this.date.getMinutes() + meridian);
-        }
+        // if (this.timepicker !== undefined) {
+        //     let hours = this.date.getHours();
+        //     if (this.timepickerOptions.showMeridian) {
+        //         // Convert 24 to 12 hour system
+        //         hours = (hours === 0 || hours === 12) ? 12 : hours % 12;
+        //     }
+        //     let meridian = this.date.getHours() >= 12 ? ' PM' : ' AM';
+        //
+        //     // this.timepicker.timepicker('setTime', this.pad(hours) + ':' + this.date.getMinutes() + meridian);
+        //
+        // }
     }
     private pad(value: any) {
         return (value && value.toString().length < 2) ? '0' + value : value.toString();

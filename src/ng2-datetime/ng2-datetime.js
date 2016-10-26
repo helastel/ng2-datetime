@@ -64,7 +64,7 @@ var NKDatetime = (function () {
                 _this.date = newDate;
                 _this.dateChange.emit(newDate);
                 _this.question.setValue(_this.date);
-                _this.updateModel(_this.date);
+               // _this.updateModel(_this.date);
             });
         }
         else if (this.datepickerOptions === false) {
@@ -96,7 +96,7 @@ var NKDatetime = (function () {
                 _this.date.setHours(parseInt(hours));
                 _this.date.setMinutes(e.time.minutes);
                 _this.dateChange.emit(_this.date);
-                _this.question.setValue(_this.date);
+              //  _this.question.setValue(_this.date);
             });
         }
         else if (this.timepickerOptions === false) {

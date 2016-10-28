@@ -118,7 +118,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
                     this.date.setHours(parseInt(hours));
                     this.date.setMinutes(e.time.minutes);
                     this.dateChange.emit(this.date);
-                    //this.question.setValue(this.date);
+                    this.question.setValue(this.date);
                 });
         } else if (this.timepickerOptions === false) {
             (<any>$('#' + this.idTimePicker)).parent().remove();

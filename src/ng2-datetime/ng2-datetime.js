@@ -64,7 +64,7 @@ var NKDatetime = (function () {
                 _this.date = newDate;
                 _this.dateChange.emit(newDate);
                 _this.question.setValue(_this.date);
-               // _this.updateModel(_this.date);
+                //this.updateModel(this.date);
             });
         }
         else if (this.datepickerOptions === false) {
@@ -156,7 +156,7 @@ var NKDatetime = (function () {
         core_1.Component({
             selector: 'datetime',
             //    directives: [MaskedInput],
-            template: "\n    <div class=\"form-inline\">\n        <div id=\"{{idDatePicker}}\" class=\"input-group date\">\n            <input [attr.id]=\"question.key\" [attr.aria-labelledby]=\"'label-' + question.key\" (keyup)=\"question.setValue($event)\" [placeholder]=\"datePlaceholderString\" type=\"text\" class=\"form-control\"/>\n            <div class=\"input-group-addon\">\n                <span [ngClass]=\"datepickerOptions.icon || 'glyphicon glyphicon-th'\"></span>\n            </div>\n        </div>\n        <div class=\"input-group bootstrap-timepicker timepicker\">\n            <input [attr.id]=\"question.key+'-time'\" [attr.aria-labelledby]=\"'label-' + question.key\" (keyup)=\"question.setValue($event)\" id=\"{{idTimePicker}}\" [placeholder]=\"timePlaceholderString\" type=\"text\" class=\"form-control input-small\">\n            <span class=\"input-group-addon\"><i [ngClass]=\"timepickerOptions.icon || 'glyphicon glyphicon-time'\"></i></span>\n        </div>\n    </div>\n   "
+            template: "\n    <div class=\"form-inline\">\n        <div id=\"{{idDatePicker}}\" class=\"input-group date\">\n            <input [attr.id]=\"question.key\" [attr.aria-labelledby]=\"'label-' + question.key\" (keyup)=\"question.setValue($event)\" [placeholder]=\"datePlaceholderString\" type=\"text\" class=\"form-control\"/>\n            <div class=\"input-group-addon\">\n                <span [ngClass]=\"datepickerOptions.icon || 'glyphicon glyphicon-th'\"></span>\n            </div>\n        </div>\n        <div class=\"input-group bootstrap-timepicker timepicker\">\n            <input [attr.id]=\"question.key+'-time'\" [attr.aria-labelledby]=\"'label-' + question.key\" (keyup)=\"question.setValue($event)\" id=\"{{idTimePicker}}\" [placeholder]=\"timePlaceholderString\" type=\"text\" class=\"form-control input-small\" autocomplete=\"off\">\n            <span class=\"input-group-addon\"><i [ngClass]=\"timepickerOptions.icon || 'glyphicon glyphicon-time'\"></i></span>\n        </div>\n    </div>\n   "
         }), 
         __metadata('design:paramtypes', [common_1.NgControl])
     ], NKDatetime);

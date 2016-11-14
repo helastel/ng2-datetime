@@ -13,7 +13,7 @@ import {ControlValueAccessor, NgControl} from '@angular/common';
             </div>
         </div>
         <div class="input-group bootstrap-timepicker timepicker">
-            <input [attr.id]="question.key+'-time'" [attr.aria-labelledby]="'label-' + question.key" (keyup)="question.setValue($event)" id="{{idTimePicker}}" [placeholder]="timePlaceholderString" type="text" class="form-control input-small">
+            <input [attr.id]="question.key+'-time'" [attr.aria-labelledby]="'label-' + question.key" (keyup)="question.setValue($event)" id="{{idTimePicker}}" [placeholder]="timePlaceholderString" type="text" class="form-control input-small" autocomplete="off">
             <span class="input-group-addon"><i [ngClass]="timepickerOptions.icon || 'glyphicon glyphicon-time'"></i></span>
         </div>
     </div>

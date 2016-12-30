@@ -39,6 +39,11 @@ var NKDatetime = (function () {
                 _this.updateModel(_this.date);
             }, 0);
         }
+        else {
+            setTimeout(function () {
+                _this.updateModel(null);
+            }, 0);
+        }
     };
     NKDatetime.prototype.registerOnChange = function (fn) {
         this.onChange = fn;

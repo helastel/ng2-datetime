@@ -102,7 +102,7 @@
   "description": "Bootstrap datetime picker for Angular2",
   "devDependencies": {
     "bootstrap": "^3.3.6",
-    "bootstrap-datepicker": "^1.6.0",
+    "bootstrap-datepicker": "^1.8.0",
     "bootstrap-timepicker": "^0.5.2",
     "concurrently": "^2.0.0",
     "jasmine-core": "^2.4.1",
